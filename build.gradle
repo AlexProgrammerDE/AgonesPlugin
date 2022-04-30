@@ -1,5 +1,8 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group = 'net.pistonmaster'
@@ -23,7 +26,24 @@ repositories {
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.18.1-R0.1-SNAPSHOT'
-    implementation 'com.github.theminecoder:agones-java-sdk:master-SNAPSHOT'
+    implementation 'com.github.theminecoder:agones-java-sdk:master-SNAPSHOT', {
+        exclude group: 'com.jaredsburrows.retrofit', module: 'retrofit2-synchronous-adapter'
+    }
+    implementation group: 'com.jaredsburrows.retrofit', name: 'retrofit2-synchronous-adapter', version: '0.6.0'
+}
+
+build {
+    dependsOn tasks.shadowJar
+}
+
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
+    prefix = "net.pistonmaster.agonesplugin"
+}
+
+shadowJar {
+    dependsOn tasks.relocateShadowJar
+    minimize()
 }
 
 def targetJavaVersion = 17

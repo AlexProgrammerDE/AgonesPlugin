@@ -1,6 +1,7 @@
 package net.pistonmaster.agonesplugin;
 
 import dev.agones.AgonesSDK;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -15,9 +16,9 @@ public final class AgonesPlugin extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        getLogger().info("Starting Agones SDK Helth Checks");
+        getLogger().info(ChatColor.AQUA + "Starting Agones SDK Health Checks");
         agonesSDK.startHealthTask(30, TimeUnit.SECONDS);
-        getLogger().info("Registering Agones SDK Ready and Player Checks");
+        getLogger().info(ChatColor.AQUA + "Registering Agones SDK Ready and Player Checks");
         getServer().getPluginManager().registerEvents(this, this);
     }
 
