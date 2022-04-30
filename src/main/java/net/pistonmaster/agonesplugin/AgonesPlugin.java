@@ -1,6 +1,6 @@
 package net.pistonmaster.agonesplugin;
 
-import dev.agones.AgonesSDK;
+import net.pistonmaster.agonesplugin.api.AgonesSDK;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,11 +29,11 @@ public final class AgonesPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        agonesSDK.alpha().playerConnect(event.getPlayer().getUniqueId().toString());
+        System.out.println(agonesSDK.alpha().playerConnect(event.getPlayer().getUniqueId().toString()));
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        agonesSDK.alpha().playerDisconnect(event.getPlayer().getUniqueId().toString());
+        System.out.println(agonesSDK.alpha().playerDisconnect(event.getPlayer().getUniqueId().toString()));
     }
 }

@@ -3,3 +3,4 @@ version: '${version}'
 main: net.pistonmaster.agonesplugin.AgonesPlugin
 api-version: 1.18
 description: A minecraft plugin to talk to the Agones API.
+load: STARTUP
