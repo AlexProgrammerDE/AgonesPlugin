@@ -29,11 +29,11 @@ public final class AgonesPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        System.out.println(agonesSDK.alpha().playerConnect(event.getPlayer().getUniqueId().toString()));
+        agonesSDK.alpha().playerConnect(event.getPlayer().getUniqueId().toString());
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        System.out.println(agonesSDK.alpha().playerDisconnect(event.getPlayer().getUniqueId().toString()));
+        agonesSDK.alpha().playerDisconnect(event.getPlayer().getUniqueId().toString());
     }
 }
